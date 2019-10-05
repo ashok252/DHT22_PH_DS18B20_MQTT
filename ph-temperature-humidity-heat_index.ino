@@ -132,9 +132,9 @@ void pH_value()
     Serial.println(phValue, 4);
   }
   ph.calibration(voltage, temperature); // calibration process by Serail CMD
-  delay(2000);
   client.publish(pubtopic, String(phValue).c_str(), true);
   client.subscribe(subtopic);
+  delay(2000);
 }
 
 void dht22()
@@ -178,6 +178,7 @@ void dht22()
   client.publish(pubtopic, String(hic).c_str(), true); 
   client.publish(pubtopic, String(hif).c_str(), true);
   client.subscribe(subtopic); 
+  delay(1000);
 }
 
 
@@ -192,8 +193,8 @@ void water_temp()
   Serial.print("water_temp: ");
   Serial.print(Fahrenheit);
   Serial.println("°F");
-  delay(1000);
   client.publish(pubtopic, String(Celcius).c_str(), true);  
   client.publish(pubtopic, String(Fahrenheit).c_str(), true);
   client.subscribe(subtopic); 
+  delay(1000);
 }
